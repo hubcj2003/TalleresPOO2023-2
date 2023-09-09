@@ -11,6 +11,10 @@ public:
 	~Corazon();
 	void dibujar();
 	void borrar();
+	int getx();
+	int gety();
+	int getancho();
+	int getalto();
 private:
 	int x, y, ancho, alto;
 };
@@ -39,3 +43,8 @@ void Corazon::borrar() {
 			cout << " ";
 		}
 }
+
+int Corazon::getx() { return x; }
+int Corazon::gety() { return y; }
+int Corazon::getancho() { return ancho; }
+int Corazon::getalto() { return alto; }

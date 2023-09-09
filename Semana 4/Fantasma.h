@@ -12,18 +12,23 @@ public:
 	void mover();
 	void dibujar();
 	void borrar();
+	int getx();
+	int gety();
+	int getancho();
+	int getalto();
 private:
-	int x, y, dx, dy, ancho, alto;
+	int x, y, dx, dy, ancho, alto, color;
 };
 
 Fantasma::Fantasma()
 {
+	color = rand() % 16;
 	ancho = 11;
 	alto = 8;
 	//dx = (rand() % 2 * 2 - 1) * 2; //SI QUIERO MOVER DE DOS EN DOS O DE MAS
 	dx = rand() % 2 * 2 - 1;
 	dy = rand() % 2 * 2 - 1;
-	x = rand() % (anchoConsola - ancho);
+	x = rand() %( anchoConsola-ancho) ;
 	y = rand() % (altoConsola - alto);
 }
 
@@ -39,6 +44,7 @@ void Fantasma::mover() {
 	y += dy;
 }
 void Fantasma::dibujar() {
+	Console::ForegroundColor = ConsoleColor(color);
 	Console::SetCursorPosition(x, y);
 	cout << "    .-.";
 	Console::SetCursorPosition(x, y + 1);
@@ -55,6 +61,7 @@ void Fantasma::dibujar() {
 	cout << "   (__) /";
 	Console::SetCursorPosition(x, y + 7);
 	cout << "   `.__.'";
+	Console::ForegroundColor = ConsoleColor::Gray;
 
 }
 void Fantasma::borrar() {
@@ -64,3 +71,8 @@ void Fantasma::borrar() {
 			cout << " ";
 		}
 }
+
+int Fantasma::getx() { return x; }
+int Fantasma::gety() { return y; }
+int Fantasma::getancho() { return ancho; }
+int Fantasma::getalto() { return alto; }

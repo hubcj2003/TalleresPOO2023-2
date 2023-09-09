@@ -17,6 +17,7 @@ public:
 	void dibujar();
 	void borrar();
 	void direccion(char tecla);
+	bool colision(int ex, int ey, int eancho, int ealto);
 private:
 	int x, y, dx, dy, ancho, alto;
 };
@@ -65,4 +66,9 @@ void Monigote::direccion(char tecla) {
 	case arriba: dy =  -1; break;
 	case abajo: dy =  1; break;
 	}
+}
+
+bool Monigote::colision(int ex, int ey, int eancho, int ealto) {
+	return x < ex + eancho && ex < x + ancho 
+		&& y < ey + ealto && ey < y + alto;
 }
